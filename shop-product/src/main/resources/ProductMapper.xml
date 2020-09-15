@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springcloud.shopproduct.mapper.ProductMapper">
+
+    <resultMap id="BaseResultMap" type="com.springcloud.shopuser.entity.ShopProduct">
+        <result column="pid" jdbcType="INTEGER" property="pid"></result>
+        <result column="pname" jdbcType="VARCHAR" property="pname"></result>
+        <result column="price" jdbcType="DOUBLE" property="price"></result>
+        <result column="stock" property="stock" jdbcType="INTEGER"></result>
+    </resultMap>
+    <insert id="addProduct">
+        insert into shop_product(pname,price,stock) values (#{pname},#{price},#{stock})
+    </insert>
+    <select id="findAll" resultType="com.springcloud.shopuser.entity.ShopProduct" resultMap="BaseResultMap">
+        select * from shop_product
+    </select>
+    <select id="findByName" resultType="com.springcloud.shopuser.entity.ShopProduct" resultMap="BaseResultMap">
+        select * from shop_product where pname=#{name}
+    </select>
+</mapper>
